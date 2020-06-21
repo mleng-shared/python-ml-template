@@ -48,8 +48,8 @@ struggle between two difficult extremes:
    development process.
  
 This boilerplate is intended to provide some practices that can make
-dev-to-prod deployment easier. Additionally, the boilerplate provides a layer of
-standardization among projects, thus reducing complexity when supporting
+dev-to-prod deployment easier. Additionally, the boilerplate provides a layer
+of standardization among projects, thus reducing complexity when supporting
 deployed applications.
 
 ### 3. Extensible
