@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "python_ml_template"
+version = "0.1.0"
+description = "Template for building ML projects with Python. Includes several tips & techniques for improving development and deployment workflow."
+authors = ["Chad Crawford <chad@cacrawford.org>, Trace Smith <tsmith5151@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.0"
+scikit-learn = "^0.23.1"
+
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
