@@ -46,9 +46,11 @@ struggle between two difficult extremes:
    locally, or testing a serverless Lambda by deploying and then
    testing endpoints. These testing patterns tend to slow down the
    development process.
-   
+ 
 This boilerplate is intended to provide some practices that can make
-dev-to-prod deployment easier.
+dev-to-prod deployment easier. Additionally, the boilerplate provides a layer of
+standardization among projects, thus reducing complexity when supporting
+deployed applications.
 
 ### 3. Extensible
 
@@ -101,15 +103,19 @@ virtualenv with the given name, and `pyenv local <virtualenv-name>`
 sets up your terminal to automatically activate this virtualenv when
 entering whatever directory this command was run in.
 
+To delete an existing virtual environment, simply run `pyenv virtualenv-delete
+<virtualenv-name>`.
+
 ### Poetry for Dependency Management
 
-[Poetry](https://github.com/python-poetry/poetry) acts as an extra
-layer on top of `pip`, giving you the ability to manage your project
-dependencies while also tracking these dependencies under version
-control, within the `pyproject.toml` file. We have found that this
-package is significantly easier to work with rather than manually
-managing a `requirements.txt` file or using `Pipenv`, which tends to
-be a bit slow when resolving any dependencies.
+[Poetry](https://github.com/python-poetry/poetry) acts as an extra layer on top
+of `pip`, giving you the ability to manage your project dependencies while also
+tracking these dependencies under version control, within the `pyproject.toml`
+file. We have found that this package is significantly easier to work with
+rather than manually managing a `requirements.txt` file or using `Pipenv`,
+which tends to be a bit slow when resolving any dependencies. Poetry also
+integrates nicely when working with custom containers by simply adding `poetry
+install` command in the Dockerfile.
 
 ## Tips & Tricks
 
@@ -173,3 +179,15 @@ This repository includes an example of such usage --
     
 which runs the function `utils.say_hello_world` from the
 `python_ml_template` package.
+
+### Publishing Package
+
+In some cases, you may need to install a custom Python package into your
+project. Poetry makes packaging relatively straightforward to publish a
+library to PyPI or a private repository. Before you can publish the library, you
+will need to first package it by running `poetry build` which builds the source
+and wheels archives. Next you will need to configure the credentials to the
+repository with `poetry config`. Please see the documentation
+[here](https://python-poetry.org/docs/repositories/#adding-credentials) for
+further details on configuration step. Finally, `poetry publish` will publish the
+package to the remote repository.
