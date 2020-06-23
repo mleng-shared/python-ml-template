@@ -10,3 +10,4 @@ from python_ml_template.utils import say_hello_world
 
 if __name__ == '__main__':
     say_hello_world()
+    
