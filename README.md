@@ -115,7 +115,62 @@ file. We have found that this package is significantly easier to work with
 rather than manually managing a `requirements.txt` file or using `Pipenv`,
 which tends to be a bit slow when resolving any dependencies. Poetry also
 integrates nicely when working with custom containers by simply adding `poetry
-install` command in the Dockerfile.
+install` command in the Dockerfile. Finally, poetry provides the ability to
+install optional dependencies by running `poetry install -E <name of extras>`
+(**Note:** dependencies are defined under `[tool.poetry.extras]` in the
+`pyproject.toml` file). This becomes handy when working with multiple
+libraries, especially in a development environment. Also, the extras flag can
+be passed for specific tasks such as unit tests. Optional dependencies are
+defined in the `pyproject.toml` with an `optional = true` parameter set for
+each library. 
+
+### Code Quality Checks
+
+[autopep8](https://pypi.org/project/autopep8/) provides a convenient way to
+automatically format Python code in order to conform to the
+[Pep8](https://www.python.org/dev/peps/pep-0008/) standards. This additional
+step of formatting source code helps ensure uniformity amongst the Data
+Scientist team in regards to coding practices and standards. 
+
+[flake8](https://pypi.org/project/flake8/) is an easy-to-use Python library to
+identify syntactical and stylistic problems in your source code. Here we
+recommend running `flake8` to identify these errors beforehand and additional
+mechanism in-place to mitigate potential errors arising in a production
+environment.  
+
+```
+autopep8 --in-place --aggressive --recursive <path>
+```
+
+```
+flake8 <path>
+```
+
+>**Note:** please refer to the *autopep8* documentation for a list of optional
+arguments. 
+
+
+### Unit Tests
+
+[pytest](https://docs.pytest.org/en/stable/) is testing framework based in
+Python. Writing and maintaining tests is not an easy task, however pytest helps
+make testing code more productive and less painful. To get started running
+your tests, first the testing scripts reside in the `tests` directory within
+the project root. Secondly, `pytest` expects the files name to being with
+`test_` or end with `_test.py`. Here, we've adopted the naming convention
+`test_<name-of-task>.py`.
+
+[pytest-cov](https://pypi.org/project/pytest-cov/) is a convenient plugin to
+produce coverage results of your unit tests. Here, we can measure the
+percentage of the source code that the tests cover. 
+
+To run all test scripts within the test directory, execute the following
+command:
+
+```
+pytest cov=scripts tests/
+```
+
 
 ## Tips & Tricks
 
@@ -140,7 +195,7 @@ several disadvantages:
 2. In some cases, the `sys.path` must be modified to an absolute path,
    meaning that sharing the code between people is difficult.
 3. Finally, storing any entrypoints at the root of the repository can
-   create an unreadable mess, or create an unecessary number of COPY
+   create an unreadable mess, or create an unnecessary number of COPY
    commands when cloning only what is needed to production. Keeping
    scripts within their own folder cleans up the root and helps others
    identify where the primary entrypoints to the application lie.
