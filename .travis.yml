@@ -4,6 +4,10 @@ language: python
 python:
   - "3.8"
 
+branches:
+  only: 
+    - master
+
 install:
   - pip install poetry
   - poetry install 
