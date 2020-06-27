@@ -1,0 +1,21 @@
+os:
+- linux
+language: python
+python:
+  - "3.8"
+
+install:
+  - pip install poetry
+  - poetry install 
+  - poetry install -E tests
+ 
+jobs:
+  include:
+    - stage: tests
+      script:
+      - pytest --random-order --cov=freqtrade --cov-config=.coveragerc
+      name: pytest
+    - script: autopep8 --in-place --aggressive --recursive .
+      name: pep8 format
+    - script: flake8 
+      name: flake8  
