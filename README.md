@@ -168,7 +168,7 @@ To run all test scripts within the test directory, execute the following
 command:
 
 ```
-pytest cov=scripts tests/
+pytest --cov=scripts tests/
 ```
 
 
