@@ -171,6 +171,15 @@ command:
 pytest --cov=scripts tests/
 ```
 
+### Continuous Integration 
+
+Testing your source code prior to deployment is crucial in order to prevent errors being propagated into production. Therefore, as part of the ML workflow, we need a continuous integration platform which can automatically build and test code changes with immediate feedback on the status of the build. Here we are defining a `build` as a group of jobs that run in series. And a `job` is essentially an automated step that clones the code repository into a virtual env and then performs a series of tasks. 
+
+There are a number of platforms to enable the continuous integration stage. In this template, we've integrated [Travis CI](https://travis-ci.org/) as part of the workflow. Travis CI can easily integrate with common repositories like GitHub and is relatively straightforward to get started with. Also for non-concurrent jobs, builds for open-source projects are [free](https://travis-ci.com/account/subscription?billingStep=1) of charge. 
+
+The integration pipeline is configured to only run if code changes are being merged into the master branch. Thus, once a Pull Request is raised, the build will kick-off and the status of the run will be provided in the PR window opened in GitHub. Travis CI provides a convenient [dashboard](https://travis-ci.org/) to track runs and access logs. 
+
+The Travis CI build will run the `.travis.yml` located in the project repository which contains a series of commands to executue. In this file, we've defined the operating system and environment we will be using in the build stage. Next, we will need to define the dependencies to install using `poetry` and then finally, we will run unit tests with `pytests` along with `autopep8` and `flake` for validating the quality of the code. 
 
 ## Tips & Tricks
 
