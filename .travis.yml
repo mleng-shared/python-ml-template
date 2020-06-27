@@ -13,7 +13,7 @@ jobs:
   include:
     - stage: tests
       script:
-      - pytest --random-order --cov=freqtrade --cov-config=.coveragerc
+      - pytest --cov=scripts tests/
       name: pytest
     - script: autopep8 --in-place --aggressive --recursive .
       name: pep8 format
