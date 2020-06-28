@@ -179,7 +179,7 @@ There are a number of platforms to enable the continuous integration stage. In t
 
 The integration pipeline is configured to only run if code changes are being merged into the master branch. Thus, once a Pull Request is raised, the build will kick-off and the status of the run will be provided in the PR window opened in GitHub. Travis CI provides a convenient [dashboard](https://travis-ci.org/) to track runs and access logs. 
 
-The Travis CI build will run the `.travis.yml` located in the project repository which contains a series of commands to executue. In this file, we've defined the operating system and environment we will be using in the build stage. Next, we will need to define the dependencies to install using `poetry` and then finally, we will run unit tests with `pytests` along with `autopep8` and `flake` for validating the quality of the code. 
+The Travis CI build will run the `.travis.yml` located in the project repository which contains a series of commands to execute. In this file, we've defined the operating system and environment we will be using in the build stage. Next, we will need to define the dependencies to install using `poetry` and then finally, we will run unit tests with `pytests` along with `autopep8` and `flake` for validating the quality of the code. 
 
 ## Tips & Tricks
 
