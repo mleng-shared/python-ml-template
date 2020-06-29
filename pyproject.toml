@@ -16,6 +16,7 @@ flake8 = {version = "^3.8.3", optional = true}
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"
+ipykernel = "^5.3.0"
 
 [tool.poetry.extras]
 tests = ["pytest", "pytest-cov","flake8", "autopep8"]

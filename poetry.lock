@@ -532,7 +532,7 @@ wcwidth = "*"
 [[package]]
 category = "dev"
 description = "Run a subprocess in a pseudo terminal"
-marker = "sys_platform != \"win32\" or os_name != \"nt\" or python_version >= \"3.3\" and sys_platform != \"win32\""
+marker = "python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\" or os_name != \"nt\" or python_version >= \"3.3\" and sys_platform != \"win32\" and (python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\")"
 name = "ptyprocess"
 optional = false
 python-versions = "*"
@@ -840,7 +840,7 @@ notebook = ">=4.4.1"
 tests = ["pytest", "pytest-cov", "flake8", "autopep8"]
 
 [metadata]
-content-hash = "3bbbc04daff109f453e42a22a6f146d0f11808fe4f5b698195f82882c988f01a"
+content-hash = "03d11f680e987449d85ecded00aad7ae05b89e42ca9a3e0bf085181f46f3b2b1"
 python-versions = "^3.8"
 
 [metadata.files]
